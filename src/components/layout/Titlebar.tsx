@@ -31,10 +31,10 @@ export const Titlebar: React.FC = () => {
   return (
     <div className="h-9 bg-fluent-bgDark border-b border-fluent-cardBorderDark flex items-center justify-between px-3 select-none drag-region shrink-0">
       {/* App Logo & Title */}
-      <div className="flex items-center gap-2.5 text-fluent-textDark no-drag">
-        <PurgoLogo className="w-5 h-5 shrink-0" />
-        <span className="font-semibold text-xs tracking-wide">Purgo</span>
-        <span className="text-[10px] text-fluent-textSecondaryDark font-medium px-1.5 py-0.5 rounded bg-fluent-cardDark border border-fluent-cardBorderDark">
+      <div className="flex items-center gap-2.5 text-fluent-textDark no-drag my-auto">
+        <PurgoLogo className="w-5 h-5 shrink-0 self-center" />
+        <span className="font-semibold text-xs tracking-wide leading-none self-center">Purgo</span>
+        <span className="text-[10px] text-fluent-textSecondaryDark font-medium px-1.5 py-0.5 rounded bg-fluent-cardDark border border-fluent-cardBorderDark self-center">
           Developer Disk Manager
         </span>
       </div>

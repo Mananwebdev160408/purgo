@@ -63,7 +63,8 @@ function createWindow() {
 function createTray() {
   try {
     const appIcon = getAppIcon();
-    tray = new Tray(appIcon);
+    const trayIcon = appIcon.isEmpty() ? appIcon : appIcon.resize({ width: 32, height: 32 });
+    tray = new Tray(trayIcon);
     const contextMenu = Menu.buildFromTemplate([
       { label: 'Purgo — Developer Disk Manager', enabled: false },
       { type: 'separator' },
