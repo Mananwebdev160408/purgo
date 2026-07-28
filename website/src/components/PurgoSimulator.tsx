@@ -246,7 +246,7 @@ export default function PurgoSimulator({ onToast }: PurgoSimulatorProps) {
                       : "bg-amber-500/15 text-amber-300 border-amber-500/30"
                   }`}
                 >
-                  {item.safety === "Safe" ? "✅ Safe" : "🔍 Review"}
+                  {item.safety === "Safe" ? "Safe" : "Review"}
                 </span>
 
                 <span className="font-mono font-bold text-sm text-white min-w-[65px] text-right">

@@ -54,7 +54,7 @@ export default function Features() {
             </p>
           </div>
           <div className="text-xs font-mono text-emerald-400 font-bold bg-[#080a11]/40 border border-[#1e2638]/40 p-2.5 rounded-lg">
-            ✓ 100% Reversible Safety
+            100% Reversible Safety
           </div>
         </div>
 
@@ -90,7 +90,7 @@ export default function Features() {
             {/* Visual Tweaks Card */}
             <div className="w-full sm:w-48 bg-[#080a11]/40 border border-[#1e2638]/50 rounded-lg p-3 font-mono text-[9px] text-slate-400 space-y-1.5 shrink-0 self-center">
               <div className="flex items-center justify-between border-b border-[#1e2638]/50 pb-1 text-white font-bold">
-                <span>🎮 Gaming_Mode</span>
+                <span>Gaming_Mode</span>
                 <span className="text-emerald-400 font-bold">ACTIVE</span>
               </div>
               <div>Game DVR: Disabled</div>

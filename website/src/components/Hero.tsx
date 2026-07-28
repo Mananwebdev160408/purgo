@@ -195,7 +195,7 @@ export default function Hero({ onToast }: HeroProps) {
                         <div className="font-bold text-white flex items-center gap-2">
                           <span>web-app/node_modules</span>
                           <span className="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-[10px] font-mono font-semibold">
-                            ✅ Safe to Reclaim
+                            Safe to Reclaim
                           </span>
                         </div>
                         <div className="text-[11px] text-slate-400 mt-0.5">
@@ -210,7 +210,7 @@ export default function Hero({ onToast }: HeroProps) {
                         <div className="font-bold text-white flex items-center gap-2">
                           <span>rust-backend/target</span>
                           <span className="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-[10px] font-mono font-semibold">
-                            ✅ Safe to Reclaim
+                            Safe to Reclaim
                           </span>
                         </div>
                         <div className="text-[11px] text-slate-400 mt-0.5">
@@ -225,7 +225,7 @@ export default function Hero({ onToast }: HeroProps) {
                         <div className="font-bold text-white flex items-center gap-2">
                           <span>ml-service/.venv</span>
                           <span className="px-2 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30 text-[10px] font-mono font-semibold">
-                            🔍 Review Before Clean
+                            Review Before Clean
                           </span>
                         </div>
                         <div className="text-[11px] text-slate-400 mt-0.5">

@@ -24,44 +24,44 @@ export default function ComparisonMatrix() {
           <tbody className="divide-y divide-[#1e2638] text-slate-300 font-mono">
             <tr>
               <td className="p-4 font-semibold text-white font-sans">System Restore Backup</td>
-              <td className="p-4 text-emerald-300 bg-emerald-950/20 border-x border-emerald-500/20 font-bold">✔ Automated Checkpoint</td>
+              <td className="p-4 text-emerald-300 bg-emerald-950/20 border-x border-emerald-500/20 font-bold">Automated Checkpoint</td>
               <td className="p-4 text-slate-400">Manual Only</td>
               <td className="p-4 text-amber-400">Prompt Only</td>
-              <td className="p-4 text-rose-400">❌ Rare / Risky</td>
+              <td className="p-4 text-rose-400">Rare / Risky</td>
             </tr>
             <tr>
               <td className="p-4 font-semibold text-white font-sans">Diagnostic Telemetry Shield</td>
-              <td className="p-4 text-emerald-300 bg-emerald-950/20 border-x border-emerald-500/20 font-bold">✔ Deep DiagTrack Block</td>
-              <td className="p-4 text-rose-400">❌ Always On</td>
-              <td className="p-4 text-rose-400">❌ Contains Ad Telemetry</td>
+              <td className="p-4 text-emerald-300 bg-emerald-950/20 border-x border-emerald-500/20 font-bold">Deep DiagTrack Block</td>
+              <td className="p-4 text-rose-400">Always On</td>
+              <td className="p-4 text-rose-400">Contains Ad Telemetry</td>
               <td className="p-4 text-amber-400">Partial</td>
             </tr>
             <tr>
               <td className="p-4 font-semibold text-white font-sans">Adware & Bundleware</td>
               <td className="p-4 text-emerald-400 bg-emerald-950/20 border-x border-emerald-500/20 font-bold">0% Adware (Clean)</td>
               <td className="p-4 text-slate-400">N/A</td>
-              <td className="p-4 text-rose-400">❌ Contains Bundled Software</td>
-              <td className="p-4 text-emerald-400">✔ Clean</td>
+              <td className="p-4 text-rose-400">Contains Bundled Software</td>
+              <td className="p-4 text-emerald-400">Clean</td>
             </tr>
             <tr>
               <td className="p-4 font-semibold text-white font-sans">Open-Source Code</td>
-              <td className="p-4 text-emerald-400 bg-emerald-950/20 border-x border-emerald-500/20 font-bold">✔ 100% MIT Transparent</td>
-              <td className="p-4 text-rose-400">❌ Closed Source</td>
-              <td className="p-4 text-rose-400">❌ Closed Source</td>
-              <td className="p-4 text-emerald-400">✔ Text Script</td>
+              <td className="p-4 text-emerald-400 bg-emerald-950/20 border-x border-emerald-500/20 font-bold">100% MIT Transparent</td>
+              <td className="p-4 text-rose-400">Closed Source</td>
+              <td className="p-4 text-rose-400">Closed Source</td>
+              <td className="p-4 text-emerald-400">Text Script</td>
             </tr>
             <tr>
               <td className="p-4 font-semibold text-white font-sans">GUI & CLI Both Available</td>
-              <td className="p-4 text-emerald-400 bg-emerald-950/20 border-x border-emerald-500/20 font-bold">✔ Dual Interface</td>
+              <td className="p-4 text-emerald-400 bg-emerald-950/20 border-x border-emerald-500/20 font-bold">Dual Interface</td>
               <td className="p-4 text-slate-400">Settings Only</td>
-              <td className="p-4 text-rose-400">❌ Heavy GUI Only</td>
-              <td className="p-4 text-rose-400">❌ CLI Only</td>
+              <td className="p-4 text-rose-400">Heavy GUI Only</td>
+              <td className="p-4 text-rose-400">CLI Only</td>
             </tr>
             <tr>
               <td className="p-4 font-semibold text-white font-sans">Dry-Run Simulation</td>
-              <td className="p-4 text-emerald-400 bg-emerald-950/20 border-x border-emerald-500/20 font-bold">✔ Safe Inspection</td>
+              <td className="p-4 text-emerald-400 bg-emerald-950/20 border-x border-emerald-500/20 font-bold">Safe Inspection</td>
               <td className="p-4 text-slate-400">N/A</td>
-              <td className="p-4 text-rose-400">❌ No</td>
+              <td className="p-4 text-rose-400">No</td>
               <td className="p-4 text-amber-400">Rare</td>
             </tr>
           </tbody>

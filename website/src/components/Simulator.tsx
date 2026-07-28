@@ -105,7 +105,7 @@ export default function Simulator({ onToast }: SimulatorProps) {
 
   const [isExecuting, setIsExecuting] = useState(false);
   const [consoleLog, setConsoleLog] = useState<string[]>([
-    '⚡ Purgo Sandbox Initialized. Select bloatware targets above.',
+    'Purgo Sandbox Initialized. Select bloatware targets above.',
   ]);
 
   const toggleItem = (id: string) => {
@@ -138,8 +138,8 @@ export default function Simulator({ onToast }: SimulatorProps) {
   const runDebloatSimulation = () => {
     setIsExecuting(true);
     setConsoleLog([
-      '🚀 Starting Purgo Debloat Dry-Run Process...',
-      '🛡️ Creating System Restore Point "Purgo_Safety_Backup"... [OK]',
+      'Starting Purgo Debloat Dry-Run Process...',
+      'Creating System Restore Point "Purgo_Safety_Backup"... [OK]',
     ]);
 
     let step = 0;
@@ -148,14 +148,14 @@ export default function Simulator({ onToast }: SimulatorProps) {
         const item = selectedItems[step];
         setConsoleLog((prev) => [
           ...prev,
-          `✔ Removed [${item.category}] ${item.name} (-${item.ramMb}MB RAM, -${item.diskMb}MB Disk)`,
+          `[OK] Removed [${item.category}] ${item.name} (-${item.ramMb}MB RAM, -${item.diskMb}MB Disk)`,
         ]);
         step++;
       } else {
         clearInterval(interval);
         setConsoleLog((prev) => [
           ...prev,
-          `🎉 Cleanup Complete! Freed ${totalRamFreed} MB RAM and ${totalDiskFreedGb} GB Disk Space. Privacy Score: ${privacyScore}%.`,
+          `Cleanup Complete! Freed ${totalRamFreed} MB RAM and ${totalDiskFreedGb} GB Disk Space. Privacy Score: ${privacyScore}%.`,
         ]);
         setIsExecuting(false);
         onToast(`Cleanup finished! Freed ${totalDiskFreedGb} GB space.`);
@@ -318,9 +318,9 @@ export default function Simulator({ onToast }: SimulatorProps) {
                   <div
                     key={idx}
                     className={`leading-relaxed ${
-                      log.startsWith('✔')
+                      log.startsWith('[OK]')
                         ? 'text-emerald-400'
-                        : log.startsWith('🎉')
+                        : log.startsWith('Cleanup Complete!')
                         ? 'text-emerald-300 font-bold bg-emerald-500/10 p-2 rounded border border-emerald-500/30'
                         : 'text-slate-300'
                     }`}
@@ -342,7 +342,7 @@ export default function Simulator({ onToast }: SimulatorProps) {
 
                 <button
                   onClick={() => {
-                    setConsoleLog(['⚡ Console reset. Safe dry-run ready.']);
+                    setConsoleLog(['Console reset. Safe dry-run ready.']);
                     onToast('Console reset');
                   }}
                   className="p-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-white/10 text-slate-400 hover:text-slate-200 transition"

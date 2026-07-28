@@ -22,7 +22,7 @@ export default function SafetyArchitecture() {
       icon: IconShieldCheck,
       title: "Ecosystem Safety Ratings",
       description:
-        "Purgo inspects project manifests (`package.json`, `Cargo.toml`, `go.mod`, `pom.xml`) and rates every build folder as ✅ Safe, 🔍 Review, or ⚠️ Caution before cleaning.",
+        "Purgo inspects project manifests (`package.json`, `Cargo.toml`, `go.mod`, `pom.xml`) and rates every build folder as Safe, Review, or Caution before cleaning.",
     },
     {
       icon: IconBrandGit,

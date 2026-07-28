@@ -29,7 +29,7 @@ const MODULES = [
     description:
       "Locate gigabytes of recreatable build folders (`node_modules`, `target/`, `dist/`, `.next/`, `venv`, `.gradle/`, `.dart_tool/`) across all scanned developer projects.",
     highlights: [
-      "Automatically rates artifacts: ✅ Safe, 🔍 Review, ⚠️ Caution",
+      "Automatically rates artifacts: Safe, Review, Caution",
       "Confirms folder is recreatable via standard package managers",
       "Calculates total recoverable storage before taking action",
       "Sends all clean actions directly to the 30-day Purgo Trash",
