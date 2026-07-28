@@ -217,7 +217,7 @@ export default function PurgoSimulator({ onToast }: PurgoSimulatorProps) {
               <span>Simulated debloat complete. Download Purgo Desktop app to run on your PC safely!</span>
             </div>
             <a
-              href="https://github.com/Mananwebdev160408/debloater"
+              href="https://github.com/Mananwebdev160408/purgo/releases/download/v1.0.0/Purgo-Setup-1.0.0.exe"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3.5 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs font-sans hover:bg-emerald-400 transition flex items-center gap-1 shrink-0"

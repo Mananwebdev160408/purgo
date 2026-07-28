@@ -67,7 +67,7 @@ export default function Navbar({ onToast }: NavbarProps) {
 
           {/* Download App Button */}
           <a
-            href="https://github.com/Mananwebdev160408/debloater"
+            href="https://github.com/Mananwebdev160408/purgo/releases/download/v1.0.0/Purgo-Setup-1.0.0.exe"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-sans font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 transition"
@@ -79,7 +79,7 @@ export default function Navbar({ onToast }: NavbarProps) {
 
           {/* GitHub Repo */}
           <a
-            href="https://github.com/Mananwebdev160408/debloater"
+            href="https://github.com/Mananwebdev160408/purgo"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-200 border border-[#1e2638] transition"

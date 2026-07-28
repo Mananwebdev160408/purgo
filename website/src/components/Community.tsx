@@ -62,7 +62,7 @@ export default function Community() {
             </p>
           </div>
           <a
-            href="https://github.com/Mananwebdev160408/debloater"
+            href="https://github.com/Mananwebdev160408/purgo"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full py-2.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-200 font-bold text-xs transition flex items-center justify-center gap-2 border border-emerald-500/30 shadow-sm"
@@ -84,7 +84,7 @@ export default function Community() {
             </p>
           </div>
           <a
-            href="https://github.com/Mananwebdev160408/debloater"
+            href="https://github.com/Mananwebdev160408/purgo/releases/download/v1.0.0/Purgo-Setup-1.0.0.exe"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 border border-emerald-400/40"
@@ -107,7 +107,7 @@ export default function Community() {
           </div>
           <div className="flex items-center gap-2">
             <a
-              href="https://github.com/Mananwebdev160408/debloater"
+              href="https://github.com/Mananwebdev160408/purgo/issues"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 py-2.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-200 border border-emerald-500/30 font-bold text-xs transition flex items-center justify-center gap-1.5"

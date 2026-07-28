@@ -181,7 +181,7 @@ export default function BottomDock({ onToast }: BottomDockProps) {
               </button>
 
               <a
-                href="https://github.com/Mananwebdev160408/debloater"
+                href="https://github.com/Mananwebdev160408/purgo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition"
@@ -250,7 +250,7 @@ export default function BottomDock({ onToast }: BottomDockProps) {
               </button>
 
               <a
-                href="https://github.com/Mananwebdev160408/debloater"
+                href="https://github.com/Mananwebdev160408/purgo"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}

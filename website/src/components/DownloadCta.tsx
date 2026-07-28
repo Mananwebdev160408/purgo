@@ -19,7 +19,7 @@ export default function DownloadCta({ onToast }: DownloadCtaProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopyCommand = () => {
-    navigator.clipboard.writeText("git clone https://github.com/Mananwebdev160408/debloater.git");
+    navigator.clipboard.writeText("git clone https://github.com/Mananwebdev160408/purgo.git");
     setCopied(true);
     if (onToast) onToast("Copied repository git command to clipboard!");
     setTimeout(() => setCopied(false), 2000);
@@ -52,17 +52,17 @@ export default function DownloadCta({ onToast }: DownloadCtaProps) {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <a
-              href="https://github.com/Mananwebdev160408/debloater"
+              href="https://github.com/Mananwebdev160408/purgo/releases/download/v1.0.0/Purgo-Setup-1.0.0.exe"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm font-sans transition flex items-center justify-center gap-3 shadow-xl shadow-emerald-500/25"
             >
               <IconDownload size={20} />
-              <span>Download Purgo Desktop v1.0.0</span>
+              <span>Download Purgo Setup Wizard v1.0.0</span>
             </a>
 
             <a
-              href="https://github.com/Mananwebdev160408/debloater"
+              href="https://github.com/Mananwebdev160408/purgo"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-4 rounded-xl bg-slate-900 border border-white/10 hover:bg-slate-800 text-slate-200 font-semibold text-sm font-sans transition flex items-center justify-center gap-2"
@@ -76,7 +76,7 @@ export default function DownloadCta({ onToast }: DownloadCtaProps) {
           <div className="pt-6">
             <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-xs font-mono text-slate-300 backdrop-blur-md">
               <span className="text-emerald-400 font-bold">$</span>
-              <span>git clone https://github.com/Mananwebdev160408/debloater.git</span>
+              <span>git clone https://github.com/Mananwebdev160408/purgo.git</span>
               <button
                 onClick={handleCopyCommand}
                 className="p-1 rounded hover:bg-white/10 text-slate-400 hover:text-emerald-300 transition ml-2"

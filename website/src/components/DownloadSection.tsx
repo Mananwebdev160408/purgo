@@ -19,8 +19,8 @@ export default function DownloadSection({ onToast }: DownloadSectionProps) {
   const [copiedHash, setCopiedHash] = useState(false);
 
   const handleDownload = () => {
-    onToast('Redirecting to latest Purgo Desktop release...');
-    window.open('https://github.com/Mananwebdev160408/debloater', '_blank');
+    onToast('Downloading Purgo Setup Wizard v1.0.0...');
+    window.open('https://github.com/Mananwebdev160408/purgo/releases/download/v1.0.0/Purgo-Setup-1.0.0.exe', '_blank');
   };
 
   const handleCopyHash = () => {
@@ -78,7 +78,7 @@ export default function DownloadSection({ onToast }: DownloadSectionProps) {
               </button>
 
               <a
-                href="https://github.com/Mananwebdev160408/debloater"
+                href="https://github.com/Mananwebdev160408/purgo/releases"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-white/10 font-sans font-semibold text-xs transition flex items-center justify-center gap-2"

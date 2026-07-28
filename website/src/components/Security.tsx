@@ -105,7 +105,7 @@ export default function Security() {
           </div>
           <div className="flex flex-wrap items-center gap-4 shrink-0 font-mono text-xs">
             <a
-              href="https://github.com/Mananwebdev160408/debloater"
+              href="https://github.com/Mananwebdev160408/purgo"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 bg-[#080a11]/45 hover:bg-[#080a11]/70 border border-[#1e2638]/60 hover:border-emerald-500/40 text-slate-300 rounded transition"

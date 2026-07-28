@@ -35,5 +35,36 @@
     "typescript": "^5.5.2",
     "vite": "^5.3.2",
     "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.purgo.app",
+    "productName": "Purgo",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Purgo",
+      "uninstallDisplayName": "Purgo Debloater Setup",
+      "artifactName": "Purgo-Setup-${version}.${ext}"
+    }
   }
 }

@@ -28,9 +28,9 @@ export default function Hero({ onToast }: HeroProps) {
 
   const handleDownload = () => {
     setDownloading(true);
-    onToast("Starting Purgo Desktop App Download...");
+    onToast("Starting Purgo Setup Wizard Download...");
     setTimeout(() => setDownloading(false), 2500);
-    window.open("https://github.com/Mananwebdev160408/debloater", "_blank");
+    window.open("https://github.com/Mananwebdev160408/purgo/releases/download/v1.0.0/Purgo-Setup-1.0.0.exe", "_blank");
   };
 
   const handleCopyCommand = (e: React.MouseEvent) => {
@@ -49,7 +49,7 @@ export default function Hero({ onToast }: HeroProps) {
       {/* Top Status Badges */}
       <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
         <a
-          href="https://github.com/Mananwebdev160408/debloater"
+          href="https://github.com/Mananwebdev160408/purgo/releases/download/v1.0.0/Purgo-Setup-1.0.0.exe"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono hover:bg-emerald-500/20 transition backdrop-blur-md"
