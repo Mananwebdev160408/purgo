@@ -80,7 +80,7 @@ export const ConfirmDeleteModal: React.FC = () => {
         {/* Modal Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-fluent-cardBorderDark bg-fluent-hoverDark/40">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-fluent-blue/20 text-fluent-blue rounded-lg">
+            <div className="p-2 bg-fluent-green/20 text-fluent-green rounded-lg">
               <Trash2 className="w-5 h-5" />
             </div>
             <div>
@@ -110,7 +110,7 @@ export const ConfirmDeleteModal: React.FC = () => {
               </div>
             ) : (
               <>
-                <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-fluent-blue/10 border border-fluent-blue/30 text-fluent-blue">
+                <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-fluent-green/10 border border-fluent-green/30 text-fluent-green">
                   <Loader2 className="w-8 h-8 animate-spin" />
                 </div>
                 <div>
@@ -126,7 +126,7 @@ export const ConfirmDeleteModal: React.FC = () => {
                   </div>
                   <div className="w-full h-2.5 bg-fluent-bgDark rounded-full overflow-hidden border border-fluent-cardBorderDark">
                     <div
-                      className="h-full bg-gradient-to-r from-fluent-blue to-emerald-400 transition-all duration-200 rounded-full"
+                      className="h-full bg-gradient-to-r from-fluent-green to-emerald-300 transition-all duration-200 rounded-full"
                       style={{ width: `${progressPct}%` }}
                     />
                   </div>
@@ -165,11 +165,11 @@ export const ConfirmDeleteModal: React.FC = () => {
             </div>
 
             {/* Safety Notice */}
-            <div className="flex items-start gap-3 p-3.5 bg-fluent-blue/10 border border-fluent-blue/30 rounded-lg text-xs text-fluent-textSecondaryDark">
-              <RefreshCw className="w-4 h-4 text-fluent-blue shrink-0 mt-0.5" />
+            <div className="flex items-start gap-3 p-3.5 bg-fluent-green/10 border border-fluent-green/30 rounded-lg text-xs text-fluent-textSecondaryDark">
+              <RefreshCw className="w-4 h-4 text-fluent-green shrink-0 mt-0.5" />
               <div>
                 <span className="font-semibold text-fluent-textDark">Reversible Action: </span>
-                These files will be safely moved into <span className="text-fluent-blue font-medium">Purgo Trash</span> with a 30-day retention period. You can restore them to their original location anytime before auto-purge.
+                These files will be safely moved into <span className="text-fluent-green font-medium">Purgo Trash</span> with a 30-day retention period. You can restore them to their original location anytime before auto-purge.
               </div>
             </div>
 
@@ -212,7 +212,7 @@ export const ConfirmDeleteModal: React.FC = () => {
             <button
               onClick={handleConfirm}
               disabled={isProcessing}
-              className="flex items-center gap-2 px-5 py-2 text-sm font-semibold bg-fluent-blue hover:bg-fluent-blueHover text-white rounded-lg shadow-md transition-all active:scale-[0.98] disabled:opacity-50"
+              className="flex items-center gap-2 px-5 py-2 text-sm font-semibold bg-fluent-green hover:bg-fluent-greenHover text-white rounded-lg shadow-md transition-all active:scale-[0.98] disabled:opacity-50"
             >
               <Trash2 className="w-4 h-4" />
               <span>Move to Purgo Trash</span>

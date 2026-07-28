@@ -57,7 +57,7 @@ export const GitManagerView: React.FC = () => {
                   </div>
                 </td>
                 <td className="py-3 px-4">
-                  <span className="px-2 py-0.5 rounded bg-fluent-bgDark border border-fluent-cardBorderDark font-mono text-[11px] text-fluent-blue">
+                  <span className="px-2 py-0.5 rounded bg-fluent-bgDark border border-fluent-cardBorderDark font-mono text-[11px] text-fluent-green">
                     {proj.gitInfo?.branch || 'main'}
                   </span>
                 </td>

@@ -9,9 +9,12 @@ export default {
     extend: {
       colors: {
         fluent: {
-          blue: '#0078d4',
-          blueHover: '#106ebe',
-          blueActive: '#005a9e',
+          green: '#10b981',
+          greenHover: '#059669',
+          greenActive: '#047857',
+          blue: '#10b981',
+          blueHover: '#059669',
+          blueActive: '#047857',
           bg: 'var(--fluent-bg)',
           card: 'var(--fluent-card)',
           cardBorder: 'var(--fluent-card-border)',

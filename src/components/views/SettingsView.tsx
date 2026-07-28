@@ -52,7 +52,7 @@ export const SettingsView: React.FC = () => {
     {
       mode: 'system',
       label: 'System Preference',
-      icon: <Monitor className="w-4 h-4 text-fluent-blue" />,
+      icon: <Monitor className="w-4 h-4 text-fluent-green" />,
       description: 'Automatically match your operating system theme',
     },
   ];
@@ -61,7 +61,7 @@ export const SettingsView: React.FC = () => {
     <div className="p-6 space-y-6 max-w-7xl mx-auto animate-in fade-in duration-200">
       <div className="flex items-center justify-between bg-fluent-cardDark border border-fluent-cardBorderDark rounded-xl p-5 shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-3 bg-fluent-blue/10 text-fluent-blue rounded-xl border border-fluent-blue/20">
+          <div className="p-3 bg-fluent-green/10 text-fluent-green rounded-xl border border-fluent-green/20">
             <Settings className="w-6 h-6" />
           </div>
           <div>
@@ -77,7 +77,7 @@ export const SettingsView: React.FC = () => {
           {/* Appearance / Theme Selector */}
           <div className="bg-fluent-cardDark border border-fluent-cardBorderDark rounded-xl p-6 space-y-4 shadow-xs">
             <div className="flex items-center gap-2">
-              <Palette className="w-4 h-4 text-fluent-blue" />
+              <Palette className="w-4 h-4 text-fluent-green" />
               <h3 className="font-semibold text-sm text-fluent-textDark">Appearance & Theme</h3>
             </div>
             <p className="text-xs text-fluent-textSecondaryDark">
@@ -91,7 +91,7 @@ export const SettingsView: React.FC = () => {
                   onClick={() => setTheme(opt.mode)}
                   className={`p-3.5 rounded-xl text-left border flex flex-col justify-between transition-all ${
                     theme === opt.mode
-                      ? 'bg-fluent-blue/10 border-fluent-blue text-fluent-textDark shadow-xs ring-1 ring-fluent-blue/30'
+                      ? 'bg-fluent-green/10 border-fluent-green text-fluent-textDark shadow-xs ring-1 ring-fluent-green/30'
                       : 'bg-fluent-bgDark border-fluent-cardBorderDark text-fluent-textSecondaryDark hover:text-fluent-textDark hover:bg-fluent-hoverDark'
                   }`}
                 >
@@ -101,7 +101,7 @@ export const SettingsView: React.FC = () => {
                       {opt.label}
                     </span>
                     {theme === opt.mode && (
-                      <span className="w-2 h-2 rounded-full bg-fluent-blue" />
+                      <span className="w-2 h-2 rounded-full bg-fluent-green" />
                     )}
                   </div>
                   <p className="text-[10px] text-fluent-textSecondaryDark leading-relaxed">
@@ -127,7 +127,7 @@ export const SettingsView: React.FC = () => {
                   onClick={() => handleRetentionChange(days)}
                   className={`py-2.5 px-3 rounded-lg text-xs font-semibold border transition-all ${
                     retentionDays === days
-                      ? 'bg-fluent-blue text-white border-fluent-blue shadow-sm'
+                      ? 'bg-fluent-green text-white border-fluent-green shadow-sm'
                       : 'bg-fluent-bgDark border-fluent-cardBorderDark text-fluent-textSecondaryDark hover:text-fluent-textDark hover:bg-fluent-hoverDark'
                   }`}
                 >
@@ -139,7 +139,7 @@ export const SettingsView: React.FC = () => {
 
           <div className="bg-fluent-cardDark border border-fluent-cardBorderDark rounded-xl p-6 space-y-4 shadow-xs">
             <div className="flex items-center gap-2">
-              <HardDrive className="w-4 h-4 text-fluent-blue" />
+              <HardDrive className="w-4 h-4 text-fluent-green" />
               <h3 className="font-semibold text-sm text-fluent-textDark">Filesystem Scanner Settings</h3>
             </div>
 
@@ -154,7 +154,7 @@ export const SettingsView: React.FC = () => {
                   type="checkbox"
                   checked={scanSettings.autoScanOnStartup}
                   onChange={(e) => updateScanSettings({ autoScanOnStartup: e.target.checked })}
-                  className="rounded border-fluent-cardBorderDark accent-fluent-blue w-4 h-4"
+                  className="rounded border-fluent-cardBorderDark accent-fluent-green w-4 h-4"
                 />
               </label>
 
@@ -166,7 +166,7 @@ export const SettingsView: React.FC = () => {
                     <button
                       type="button"
                       onClick={handleSelectDefaultDirectory}
-                      className="flex items-center gap-1 px-2.5 py-1 text-[11px] font-semibold bg-fluent-blue hover:bg-fluent-blueHover text-white rounded transition-colors"
+                      className="flex items-center gap-1 px-2.5 py-1 text-[11px] font-semibold bg-fluent-green hover:bg-fluent-greenHover text-white rounded transition-colors"
                     >
                       <FolderOpen className="w-3 h-3" />
                       <span>Change Folder</span>
@@ -194,7 +194,7 @@ export const SettingsView: React.FC = () => {
                   type="checkbox"
                   checked={scanSettings.ignoreHiddenFolders}
                   onChange={(e) => updateScanSettings({ ignoreHiddenFolders: e.target.checked })}
-                  className="rounded border-fluent-cardBorderDark accent-fluent-blue"
+                  className="rounded border-fluent-cardBorderDark accent-fluent-green"
                 />
               </label>
 
@@ -204,7 +204,7 @@ export const SettingsView: React.FC = () => {
                   type="checkbox"
                   checked={scanSettings.ignoreSystemDirectories}
                   onChange={(e) => updateScanSettings({ ignoreSystemDirectories: e.target.checked })}
-                  className="rounded border-fluent-cardBorderDark accent-fluent-blue"
+                  className="rounded border-fluent-cardBorderDark accent-fluent-green"
                 />
               </label>
 
@@ -242,7 +242,7 @@ export const SettingsView: React.FC = () => {
                 value={newRulePath}
                 onChange={(e) => setNewRulePath(e.target.value)}
                 placeholder="Enter full directory path (e.g. C:\Users\asus\Work)"
-                className="w-full px-3 py-2 bg-fluent-bgDark border border-fluent-cardBorderDark rounded-lg text-xs text-fluent-textDark placeholder-fluent-textSecondaryDark focus:outline-none focus:border-fluent-blue"
+                className="w-full px-3 py-2 bg-fluent-bgDark border border-fluent-cardBorderDark rounded-lg text-xs text-fluent-textDark placeholder-fluent-textSecondaryDark focus:outline-none focus:border-fluent-green"
               />
               <div className="flex items-center gap-2">
                 <input
@@ -250,11 +250,11 @@ export const SettingsView: React.FC = () => {
                   value={newRuleReason}
                   onChange={(e) => setNewRuleReason(e.target.value)}
                   placeholder="Reason / Tag (e.g. Work Confidential)"
-                  className="flex-1 px-3 py-2 bg-fluent-bgDark border border-fluent-cardBorderDark rounded-lg text-xs text-fluent-textDark placeholder-fluent-textSecondaryDark focus:outline-none focus:border-fluent-blue"
+                  className="flex-1 px-3 py-2 bg-fluent-bgDark border border-fluent-cardBorderDark rounded-lg text-xs text-fluent-textDark placeholder-fluent-textSecondaryDark focus:outline-none focus:border-fluent-green"
                 />
                 <button
                   type="submit"
-                  className="flex items-center gap-1 px-4 py-2 bg-fluent-blue hover:bg-fluent-blueHover text-white text-xs font-semibold rounded-lg shadow-sm transition-all"
+                  className="flex items-center gap-1 px-4 py-2 bg-fluent-green hover:bg-fluent-greenHover text-white text-xs font-semibold rounded-lg shadow-sm transition-all"
                 >
                   <Plus className="w-4 h-4" />
                   <span>Add</span>

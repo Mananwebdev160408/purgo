@@ -91,7 +91,7 @@ export const SafeArtifactsView: React.FC = () => {
           {selectedItems.length > 0 && (
             <button
               onClick={handleBulkTrash}
-              className="flex items-center gap-2 px-4 py-2 bg-fluent-blue hover:bg-fluent-blueHover text-white text-xs font-semibold rounded-lg shadow-md transition-all"
+              className="flex items-center gap-2 px-4 py-2 bg-fluent-green hover:bg-fluent-greenHover text-white text-xs font-semibold rounded-lg shadow-md transition-all"
             >
               <Trash2 className="w-4 h-4" />
               <span>Move Selected to Purgo Trash ({formatSize(selectedBytes)})</span>
@@ -132,7 +132,7 @@ export const SafeArtifactsView: React.FC = () => {
             <select
               value={filterSafety}
               onChange={(e) => setFilterSafety(e.target.value)}
-              className="bg-fluent-bgDark border border-fluent-cardBorderDark text-fluent-textDark rounded-lg px-2.5 py-1 text-xs focus:outline-none focus:border-fluent-blue"
+              className="bg-fluent-bgDark border border-fluent-cardBorderDark text-fluent-textDark rounded-lg px-2.5 py-1 text-xs focus:outline-none focus:border-fluent-green"
             >
               <option value="all">All Ratings</option>
               <option value="safe">Safe Only</option>
@@ -145,7 +145,7 @@ export const SafeArtifactsView: React.FC = () => {
             <select
               value={filterFramework}
               onChange={(e) => setFilterFramework(e.target.value)}
-              className="bg-fluent-bgDark border border-fluent-cardBorderDark text-fluent-textDark rounded-lg px-2.5 py-1 text-xs focus:outline-none focus:border-fluent-blue"
+              className="bg-fluent-bgDark border border-fluent-cardBorderDark text-fluent-textDark rounded-lg px-2.5 py-1 text-xs focus:outline-none focus:border-fluent-green"
             >
               <option value="all">All Ecosystems</option>
               <option value="Next.js">Next.js</option>
@@ -177,10 +177,10 @@ export const SafeArtifactsView: React.FC = () => {
                 <td className="py-3 px-4">
                   <button
                     onClick={() => toggleArtifactSelection(projectId, artifact.id)}
-                    className="text-fluent-textSecondaryDark hover:text-fluent-blue transition-colors"
+                    className="text-fluent-textSecondaryDark hover:text-fluent-green transition-colors"
                   >
                     {artifact.isSelected ? (
-                      <CheckSquare className="w-4 h-4 text-fluent-blue" />
+                      <CheckSquare className="w-4 h-4 text-fluent-green" />
                     ) : (
                       <Square className="w-4 h-4" />
                     )}

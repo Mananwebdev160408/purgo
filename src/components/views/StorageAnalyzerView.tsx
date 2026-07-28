@@ -28,7 +28,7 @@ export const StorageAnalyzerView: React.FC = () => {
   };
 
   const ecosystemColors = [
-    'bg-fluent-blue hover:bg-fluent-blueHover',
+    'bg-fluent-green hover:bg-fluent-greenHover',
     'bg-purple-600 hover:bg-purple-500',
     'bg-emerald-600 hover:bg-emerald-500',
     'bg-amber-600 hover:bg-amber-500',
@@ -43,7 +43,7 @@ export const StorageAnalyzerView: React.FC = () => {
       {/* Header Info */}
       <div className="flex items-center justify-between bg-fluent-cardDark border border-fluent-cardBorderDark rounded-xl p-5 shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-3 bg-fluent-blue/10 text-fluent-blue rounded-xl border border-fluent-blue/20">
+          <div className="p-3 bg-fluent-green/10 text-fluent-green rounded-xl border border-fluent-green/20">
             <PieChart className="w-6 h-6" />
           </div>
           <div>
@@ -134,7 +134,7 @@ export const StorageAnalyzerView: React.FC = () => {
       <div className="bg-fluent-cardDark border border-fluent-cardBorderDark rounded-xl overflow-hidden shadow-xs">
         <div className="px-6 py-4 border-b border-fluent-cardBorderDark bg-fluent-hoverDark/30 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs font-semibold text-fluent-textDark">
-            <HardDrive className="w-4 h-4 text-fluent-blue" />
+            <HardDrive className="w-4 h-4 text-fluent-green" />
             <span>Developer Projects Directory</span>
           </div>
           <div className="text-xs text-fluent-textSecondaryDark font-mono">
@@ -158,7 +158,7 @@ export const StorageAnalyzerView: React.FC = () => {
                     <button className="text-fluent-textSecondaryDark shrink-0">
                       {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
                     </button>
-                    <Folder className="w-4 h-4 text-fluent-blue shrink-0" />
+                    <Folder className="w-4 h-4 text-fluent-green shrink-0" />
                     <div className="min-w-0 truncate">
                       <span className="font-semibold text-fluent-textDark truncate">{proj.name}</span>
                       <span className="ml-2.5 text-[10px] px-2 py-0.5 rounded bg-fluent-bgDark border border-fluent-cardBorderDark text-fluent-textSecondaryDark font-mono">
@@ -172,7 +172,7 @@ export const StorageAnalyzerView: React.FC = () => {
                     <div className="w-36 flex items-center gap-2">
                       <div className="flex-1 h-2 bg-fluent-bgDark rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-fluent-blue rounded-full transition-all duration-300"
+                          className="h-full bg-fluent-green rounded-full transition-all duration-300"
                           style={{ width: `${Math.min(100, Math.max(0, parseFloat(pctOfTotal)))}%` }}
                         />
                       </div>

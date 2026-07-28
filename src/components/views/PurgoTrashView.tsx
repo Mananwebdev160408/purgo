@@ -152,9 +152,9 @@ export const PurgoTrashView: React.FC = () => {
       </div>
 
       {/* Reversibility Assurance Box */}
-      <div className="p-4 bg-fluent-blue/10 border border-fluent-blue/30 rounded-xl flex items-center justify-between text-xs">
+      <div className="p-4 bg-fluent-green/10 border border-fluent-green/30 rounded-xl flex items-center justify-between text-xs">
         <div className="flex items-center gap-3">
-          <ShieldCheck className="w-5 h-5 text-fluent-blue" />
+          <ShieldCheck className="w-5 h-5 text-fluent-green" />
           <div>
             <span className="font-semibold text-fluent-textDark">Safety Guarantee: </span>
             Restoring an item reinstates the exact original folder structure and path on your computer.
@@ -195,7 +195,7 @@ export const PurgoTrashView: React.FC = () => {
                       type="checkbox"
                       checked={!!item.isSelected}
                       onChange={() => toggleItemSelection(item.id)}
-                      className="rounded border-fluent-cardBorderDark accent-fluent-blue cursor-pointer"
+                      className="rounded border-fluent-cardBorderDark accent-fluent-green cursor-pointer"
                     />
                   </td>
                   <td className="py-3 px-4">

@@ -56,7 +56,7 @@ export const Header: React.FC = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Global search projects, artifacts, paths, frameworks..."
-          className="w-full pl-9 pr-4 py-1.5 bg-fluent-bgDark border border-fluent-cardBorderDark rounded-lg text-xs text-fluent-textDark placeholder-fluent-textSecondaryDark focus:outline-none focus:border-fluent-blue transition-colors"
+          className="w-full pl-9 pr-4 py-1.5 bg-fluent-bgDark border border-fluent-cardBorderDark rounded-lg text-xs text-fluent-textDark placeholder-fluent-textSecondaryDark focus:outline-none focus:border-fluent-green transition-colors"
         />
       </div>
 
@@ -77,7 +77,7 @@ export const Header: React.FC = () => {
           className={`flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold rounded-lg shadow-sm transition-all ${
             isScanning
               ? 'bg-fluent-hoverDark text-fluent-textSecondaryDark cursor-not-allowed'
-              : 'bg-fluent-blue hover:bg-fluent-blueHover text-white active:scale-95'
+              : 'bg-fluent-green hover:bg-fluent-greenHover text-white active:scale-95'
           }`}
         >
           {isScanning ? (
@@ -100,7 +100,7 @@ export const Header: React.FC = () => {
         >
           {theme === 'dark' && <Sun className="w-4 h-4 text-amber-400" />}
           {theme === 'light' && <Moon className="w-4 h-4 text-indigo-400" />}
-          {theme === 'system' && <Monitor className="w-4 h-4 text-fluent-blue" />}
+          {theme === 'system' && <Monitor className="w-4 h-4 text-fluent-green" />}
         </button>
       </div>
     </header>

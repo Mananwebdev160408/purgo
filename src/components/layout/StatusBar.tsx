@@ -20,8 +20,8 @@ export const StatusBar: React.FC = () => {
       {/* Left Progress or Status */}
       <div className="flex items-center gap-3 truncate max-w-lg">
         {isScanning ? (
-          <div className="flex items-center gap-2 text-fluent-blue">
-            <div className="w-2.5 h-2.5 border-2 border-fluent-blue border-t-transparent rounded-full animate-spin" />
+          <div className="flex items-center gap-2 text-fluent-green">
+            <div className="w-2.5 h-2.5 border-2 border-fluent-green border-t-transparent rounded-full animate-spin" />
             <span className="font-mono truncate">Scanning: {scanProgressPath}</span>
           </div>
         ) : (

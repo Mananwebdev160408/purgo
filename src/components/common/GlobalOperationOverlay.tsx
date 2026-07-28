@@ -15,7 +15,7 @@ export const GlobalOperationOverlay: React.FC = () => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-4 animate-in fade-in duration-200">
       <div className="bg-fluent-cardDark border border-fluent-cardBorderDark text-fluent-textDark w-full max-w-md rounded-2xl shadow-2xl overflow-hidden p-6 space-y-5 flex flex-col items-center text-center">
         {/* Animated Loader Circle */}
-        <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-fluent-blue/10 border border-fluent-blue/30 text-fluent-blue">
+        <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-fluent-green/10 border border-fluent-green/30 text-fluent-green">
           <Loader2 className="w-8 h-8 animate-spin" />
         </div>
 
@@ -36,7 +36,7 @@ export const GlobalOperationOverlay: React.FC = () => {
 
           <div className="w-full h-2 bg-fluent-bgDark rounded-full overflow-hidden border border-fluent-cardBorderDark">
             <div
-              className="h-full bg-gradient-to-r from-fluent-blue to-emerald-400 transition-all duration-300 rounded-full"
+              className="h-full bg-gradient-to-r from-fluent-green to-emerald-300 transition-all duration-300 rounded-full"
               style={{ width: `${percentage}%` }}
             />
           </div>

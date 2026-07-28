@@ -38,7 +38,7 @@ export const LargeFilesView: React.FC = () => {
           <select
             value={minSizeMB}
             onChange={(e) => setMinSizeMB(Number(e.target.value))}
-            className="bg-fluent-bgDark border border-fluent-cardBorderDark text-fluent-textDark rounded-lg px-3 py-1.5 focus:outline-none focus:border-fluent-blue font-medium"
+            className="bg-fluent-bgDark border border-fluent-cardBorderDark text-fluent-textDark rounded-lg px-3 py-1.5 focus:outline-none focus:border-fluent-green font-medium"
           >
             <option value={100}>&gt; 100 MB</option>
             <option value={500}>&gt; 500 MB</option>

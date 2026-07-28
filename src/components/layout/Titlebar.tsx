@@ -41,7 +41,7 @@ export const Titlebar: React.FC = () => {
 
       {/* Center indicator */}
       <div className="text-[11px] text-fluent-textSecondaryDark flex items-center gap-1.5 pointer-events-none">
-        <HardDrive className="w-3.5 h-3.5 text-fluent-blue" />
+        <HardDrive className="w-3.5 h-3.5 text-fluent-green" />
         <span>Purgo Safety Engine Active</span>
       </div>
 

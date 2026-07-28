@@ -39,7 +39,7 @@ export const ProgressRing: React.FC<ProgressRingProps> = ({
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
-          className="text-fluent-blue fill-transparent transition-all duration-700 ease-out"
+          className="text-fluent-green fill-transparent transition-all duration-700 ease-out"
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center">

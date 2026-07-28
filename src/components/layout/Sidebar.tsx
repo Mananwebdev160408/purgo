@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigationStore, ActiveTab } from '../../store/useNavigationStore';
 import { useTrashStore } from '../../store/useTrashStore';
 import { useScanStore } from '../../store/useScanStore';
-import { PurgoLogo } from '../common/PurgoLogo';
 import {
   LayoutDashboard,
   PieChart,
@@ -52,7 +51,7 @@ export const Sidebar: React.FC = () => {
               onClick={() => setActiveTab(item.id)}
               className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                 isActive
-                  ? 'bg-fluent-blue text-white shadow-sm'
+                  ? 'bg-fluent-green text-white shadow-sm'
                   : 'text-fluent-textSecondaryDark hover:text-fluent-textDark hover:bg-fluent-hoverDark'
               }`}
             >
@@ -76,20 +75,6 @@ export const Sidebar: React.FC = () => {
             </button>
           );
         })}
-      </div>
-
-      {/* Footer Branding Info */}
-      <div className="px-4 py-3 mx-2 bg-fluent-bgDark/60 border border-fluent-cardBorderDark rounded-lg">
-        <div className="flex items-center justify-between text-xs font-semibold text-fluent-textDark">
-          <div className="flex items-center gap-2">
-            <PurgoLogo className="w-4 h-4 shrink-0" />
-            <span>Purgo Safety Engine</span>
-          </div>
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" title="System Ready" />
-        </div>
-        <div className="text-[10px] text-fluent-textSecondaryDark mt-0.5 pl-6">
-          30-Day Trash Retention Active
-        </div>
       </div>
     </aside>
   );

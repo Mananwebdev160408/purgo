@@ -47,7 +47,7 @@ export const CacheManagerView: React.FC = () => {
     <div className="p-6 space-y-6 max-w-7xl mx-auto animate-in fade-in duration-200">
       <div className="flex items-center justify-between bg-fluent-cardDark border border-fluent-cardBorderDark rounded-xl p-5 shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-3 bg-fluent-blue/10 text-fluent-blue rounded-xl border border-fluent-blue/20">
+          <div className="p-3 bg-fluent-green/10 text-fluent-green rounded-xl border border-fluent-green/20">
             <Database className="w-6 h-6" />
           </div>
           <div>
