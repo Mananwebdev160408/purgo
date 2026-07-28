@@ -5,7 +5,13 @@ contextBridge.exposeInMainWorld('purgoAPI', {
   minimizeWindow: () => ipcRenderer.invoke('purgo:minimize'),
   maximizeWindow: () => ipcRenderer.invoke('purgo:maximize'),
   closeWindow: () => ipcRenderer.invoke('purgo:close'),
+  quitApp: () => ipcRenderer.invoke('purgo:quitApp'),
   isMaximized: () => ipcRenderer.invoke('purgo:isMaximized'),
+
+  // Startup & Tray
+  getAutoLaunch: () => ipcRenderer.invoke('purgo:getAutoLaunch'),
+  setAutoLaunch: (enabled: boolean) => ipcRenderer.invoke('purgo:setAutoLaunch', enabled),
+  setTrayToolTip: (text: string) => ipcRenderer.invoke('purgo:setTrayToolTip', text),
 
   // Filesystem scan
   scanDirectory: (dirPath: string, options?: any) =>

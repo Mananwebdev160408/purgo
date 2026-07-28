@@ -7,6 +7,7 @@ import { PurgoTrashManager } from './trashManager';
 
 let mainWindow: BrowserWindow | null = null;
 let tray: Tray | null = null;
+let isQuitting = false;
 const trashManager = new PurgoTrashManager(30);
 
 function getAppIcon() {
@@ -28,6 +29,7 @@ function getAppIcon() {
 
 function createWindow() {
   const appIcon = getAppIcon();
+  const isHiddenLaunch = process.argv.includes('--hidden') || app.getLoginItemSettings().wasOpenedAtLogin;
 
   mainWindow = new BrowserWindow({
     width: 1280,
@@ -37,6 +39,7 @@ function createWindow() {
     frame: false,
     titleBarStyle: 'hidden',
     backgroundColor: '#202020',
+    show: false, // Don't show immediately until ready or if not hidden
     icon: appIcon,
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
@@ -50,14 +53,68 @@ function createWindow() {
 
   if (isDev) {
     mainWindow.loadURL('http://localhost:4173');
-    // mainWindow.webContents.openDevTools();
   } else {
     mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
   }
 
+  // Show window when ready if not background startup
+  mainWindow.once('ready-to-show', () => {
+    if (!isHiddenLaunch) {
+      mainWindow?.show();
+    }
+  });
+
+  // Intercept window close to minimize to tray instead of quitting
+  mainWindow.on('close', (event) => {
+    if (!isQuitting) {
+      event.preventDefault();
+      mainWindow?.hide();
+    }
+  });
+
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+}
+
+function updateTrayMenu() {
+  if (!tray) return;
+  const isAutoLaunch = app.getLoginItemSettings().openAtLogin;
+
+  const contextMenu = Menu.buildFromTemplate([
+    { label: 'Purgo — Developer Disk Manager', enabled: false },
+    { type: 'separator' },
+    {
+      label: 'Open Purgo',
+      click: () => {
+        mainWindow?.show();
+        mainWindow?.focus();
+      },
+    },
+    {
+      label: 'Run on Windows Startup',
+      type: 'checkbox',
+      checked: isAutoLaunch,
+      click: (item) => {
+        app.setLoginItemSettings({
+          openAtLogin: item.checked,
+          openAsHidden: true,
+          path: app.getPath('exe'),
+          args: ['--hidden'],
+        });
+        updateTrayMenu();
+      },
+    },
+    { type: 'separator' },
+    {
+      label: 'Quit Purgo',
+      click: () => {
+        isQuitting = true;
+        app.quit();
+      },
+    },
+  ]);
+  tray.setContextMenu(contextMenu);
 }
 
 function createTray() {
@@ -65,16 +122,18 @@ function createTray() {
     const appIcon = getAppIcon();
     const trayIcon = appIcon.isEmpty() ? appIcon : appIcon.resize({ width: 32, height: 32 });
     tray = new Tray(trayIcon);
-    const contextMenu = Menu.buildFromTemplate([
-      { label: 'Purgo — Developer Disk Manager', enabled: false },
-      { type: 'separator' },
-      { label: 'Open Purgo', click: () => { mainWindow?.show(); mainWindow?.focus(); } },
-      { type: 'separator' },
-      { label: 'Quit', click: () => app.quit() },
-    ]);
     tray.setToolTip('Purgo — Developer Disk Manager');
-    tray.setContextMenu(contextMenu);
-    tray.on('double-click', () => { mainWindow?.show(); mainWindow?.focus(); });
+    updateTrayMenu();
+
+    tray.on('double-click', () => {
+      mainWindow?.show();
+      mainWindow?.focus();
+    });
+
+    tray.on('click', () => {
+      mainWindow?.show();
+      mainWindow?.focus();
+    });
   } catch (err) {
     console.error('Tray initialization error:', err);
   }
@@ -86,12 +145,23 @@ app.whenReady().then(() => {
   trashManager.purgeExpiredItems().catch(() => {});
 
   app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    } else {
+      mainWindow?.show();
+      mainWindow?.focus();
+    }
   });
 });
 
+app.on('before-quit', () => {
+  isQuitting = true;
+});
+
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
+  if (process.platform !== 'darwin' && isQuitting) {
+    app.quit();
+  }
 });
 
 // ─── Window Controls ──────────────────────────────────────────────────────────
@@ -108,11 +178,44 @@ ipcMain.handle('purgo:maximize', () => {
 });
 
 ipcMain.handle('purgo:close', () => {
-  mainWindow?.close();
+  // Hide window to system tray instead of destroying
+  if (!isQuitting && mainWindow) {
+    mainWindow.hide();
+  } else {
+    mainWindow?.close();
+  }
+});
+
+ipcMain.handle('purgo:quitApp', () => {
+  isQuitting = true;
+  app.quit();
 });
 
 ipcMain.handle('purgo:isMaximized', () => {
   return mainWindow?.isMaximized() ?? false;
+});
+
+// ─── Auto Launch & System Tray Controls ───────────────────────────────────────
+ipcMain.handle('purgo:getAutoLaunch', () => {
+  return app.getLoginItemSettings().openAtLogin;
+});
+
+ipcMain.handle('purgo:setAutoLaunch', (_, enabled: boolean) => {
+  app.setLoginItemSettings({
+    openAtLogin: enabled,
+    openAsHidden: true,
+    path: app.getPath('exe'),
+    args: ['--hidden'],
+  });
+  updateTrayMenu();
+  return true;
+});
+
+ipcMain.handle('purgo:setTrayToolTip', (_, text: string) => {
+  if (tray) {
+    tray.setToolTip(`Purgo — ${text}`);
+  }
+  return true;
 });
 
 // ─── System ───────────────────────────────────────────────────────────────────
@@ -129,9 +232,17 @@ ipcMain.handle('purgo:selectFolder', async () => {
 
 // ─── Filesystem Scanner ───────────────────────────────────────────────────────
 ipcMain.handle('purgo:scanDirectory', async (_, dirPath: string, options?: any) => {
-  return await scanDirectoryForProjects(dirPath, options, (currentPath) => {
-    mainWindow?.webContents.send('purgo:scanProgress', currentPath);
-  });
+  if (tray) tray.setToolTip(`Purgo — Scanning: ${path.basename(dirPath)}...`);
+  try {
+    const result = await scanDirectoryForProjects(dirPath, options, (currentPath) => {
+      mainWindow?.webContents.send('purgo:scanProgress', currentPath);
+    });
+    if (tray) tray.setToolTip('Purgo — System Ready');
+    return result;
+  } catch (err) {
+    if (tray) tray.setToolTip('Purgo — System Ready');
+    throw err;
+  }
 });
 
 // ─── Cache Scanner ────────────────────────────────────────────────────────────

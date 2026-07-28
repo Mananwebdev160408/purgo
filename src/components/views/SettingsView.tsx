@@ -10,6 +10,16 @@ export const SettingsView: React.FC = () => {
 
   const [newRulePath, setNewRulePath] = useState('');
   const [newRuleReason, setNewRuleReason] = useState('');
+  const [autoLaunchOnBoot, setAutoLaunchOnBoot] = useState(false);
+
+  React.useEffect(() => {
+    ApiBridge.getAutoLaunch().then(setAutoLaunchOnBoot);
+  }, []);
+
+  const handleAutoLaunchToggle = async (enabled: boolean) => {
+    setAutoLaunchOnBoot(enabled);
+    await ApiBridge.setAutoLaunch(enabled);
+  };
 
   const handleAddRule = (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,6 +154,20 @@ export const SettingsView: React.FC = () => {
             </div>
 
             <div className="space-y-3 text-xs">
+              {/* Launch on Windows Startup */}
+              <label className="flex items-center justify-between p-3 bg-fluent-bgDark border border-fluent-cardBorderDark rounded-lg cursor-pointer">
+                <div>
+                  <span className="text-fluent-textDark font-medium block">Run on System Startup (Background)</span>
+                  <span className="text-[10px] text-fluent-textSecondaryDark block mt-0.5">Start Purgo silently in the system tray when Windows boots up</span>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={autoLaunchOnBoot}
+                  onChange={(e) => handleAutoLaunchToggle(e.target.checked)}
+                  className="rounded border-fluent-cardBorderDark accent-fluent-green w-4 h-4"
+                />
+              </label>
+
               {/* Auto Scan on App Bootup */}
               <label className="flex items-center justify-between p-3 bg-fluent-bgDark border border-fluent-cardBorderDark rounded-lg cursor-pointer">
                 <div>

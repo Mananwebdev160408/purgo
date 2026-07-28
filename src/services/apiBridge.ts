@@ -2,7 +2,6 @@ import '../types/purgoAPI.d.ts';
 import { ProjectItem, LargeFileItem, DuplicateGroup } from '../types/project';
 import { TrashItem } from '../types/trash';
 import { CacheItem } from '../types/cache';
-
 import { ScanOptions } from '../types/settings';
 
 export class ApiBridge {
@@ -22,6 +21,33 @@ export class ApiBridge {
       return await window.purgoAPI!.selectFolder();
     }
     return null;
+  }
+
+  public static async getAutoLaunch(): Promise<boolean> {
+    if (this.isElectron()) {
+      return await window.purgoAPI!.getAutoLaunch();
+    }
+    return false;
+  }
+
+  public static async setAutoLaunch(enabled: boolean): Promise<boolean> {
+    if (this.isElectron()) {
+      return await window.purgoAPI!.setAutoLaunch(enabled);
+    }
+    return false;
+  }
+
+  public static async quitApp(): Promise<void> {
+    if (this.isElectron()) {
+      await window.purgoAPI!.quitApp();
+    }
+  }
+
+  public static async setTrayToolTip(text: string): Promise<boolean> {
+    if (this.isElectron()) {
+      return await window.purgoAPI!.setTrayToolTip(text);
+    }
+    return false;
   }
 
   public static async scanDirectory(

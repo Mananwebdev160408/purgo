@@ -7,7 +7,11 @@ export interface PurgoAPI {
   minimizeWindow: () => Promise<void>;
   maximizeWindow: () => Promise<void>;
   closeWindow: () => Promise<void>;
+  quitApp: () => Promise<void>;
   isMaximized: () => Promise<boolean>;
+  getAutoLaunch: () => Promise<boolean>;
+  setAutoLaunch: (enabled: boolean) => Promise<boolean>;
+  setTrayToolTip: (text: string) => Promise<boolean>;
   scanDirectory: (dirPath: string, options?: ScanOptions | string[]) => Promise<{ projects: ProjectItem[]; largeFiles: LargeFileItem[]; duplicates?: DuplicateGroup[] }>;
   scanCaches: () => Promise<CacheItem[]>;
   moveToTrash: (sourcePath: string, projectName: string, folderName: string, sizeBytes: number) => Promise<TrashItem>;
