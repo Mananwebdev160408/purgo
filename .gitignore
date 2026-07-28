@@ -54,6 +54,17 @@ desktop.ini
 .cache/
 *.tmp
 *.temp
+*.tsbuildinfo
 .agents/
 .impeccable/
 .claude/
+scratch/
+artifacts/
+
+# Ignore compiled JS in TypeScript directories
+electron/*.js
+src/**/*.js
+vite.config.js
+vite.config.electron.js
+vite.config.d.ts
+
