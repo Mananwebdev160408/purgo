@@ -37,26 +37,6 @@ export const DashboardView: React.FC = () => {
     return (bytes / (1024 * 1024)).toFixed(0) + ' MB';
   };
 
-  const getEcosystemBadge = (ecosystem: string) => {
-    const map: Record<string, { label: string; bg: string; text: string }> = {
-      'Node.js':  { label: 'Node',  bg: 'bg-emerald-500/15 border-emerald-500/30', text: 'text-emerald-400' },
-      'React':    { label: 'React', bg: 'bg-cyan-500/15 border-cyan-500/30',       text: 'text-cyan-400' },
-      'Next.js':  { label: 'Next',  bg: 'bg-zinc-500/15 border-zinc-500/30',       text: 'text-zinc-200' },
-      'Vite':     { label: 'Vite',  bg: 'bg-purple-500/15 border-purple-500/30',   text: 'text-purple-400' },
-      'Vue':      { label: 'Vue',   bg: 'bg-emerald-500/15 border-emerald-500/30', text: 'text-emerald-400' },
-      'Nuxt':     { label: 'Nuxt',  bg: 'bg-green-500/15 border-green-500/30',     text: 'text-green-400' },
-      'Python':   { label: 'Py',    bg: 'bg-amber-500/15 border-amber-500/30',     text: 'text-amber-400' },
-      'Rust':     { label: 'Rust',  bg: 'bg-orange-500/15 border-orange-500/30',   text: 'text-orange-400' },
-      'Java':     { label: 'Java',  bg: 'bg-red-500/15 border-red-500/30',         text: 'text-red-400' },
-      'Go':       { label: 'Go',    bg: 'bg-cyan-500/15 border-cyan-500/30',       text: 'text-cyan-400' },
-      'Flutter':  { label: 'Dart',  bg: 'bg-sky-500/15 border-sky-500/30',         text: 'text-sky-400' },
-      'C#':       { label: 'C#',    bg: 'bg-violet-500/15 border-violet-500/30',   text: 'text-violet-400' },
-      'C++':      { label: 'C++',   bg: 'bg-blue-500/15 border-blue-500/30',       text: 'text-blue-400' },
-      'Electron': { label: 'Elec',  bg: 'bg-teal-500/15 border-teal-500/30',       text: 'text-teal-400' },
-    };
-    return map[ecosystem] || { label: ecosystem.substring(0, 4), bg: 'bg-fluent-cardDark border-fluent-cardBorderDark', text: 'text-fluent-green' };
-  };
-
   // Sort top storage consumers
   const topConsumers = useMemo(() => [...projects].sort((a, b) => b.reclaimableSizeBytes - a.reclaimableSizeBytes).slice(0, 4), [projects]);
 
@@ -220,14 +200,9 @@ export const DashboardView: React.FC = () => {
                   className="flex items-center justify-between p-3.5 bg-fluent-bgDark border border-fluent-cardBorderDark rounded-xl hover:border-fluent-green/40 transition-all"
                 >
                   <div className="flex items-center gap-3">
-                    {(() => {
-                      const badge = getEcosystemBadge(proj.ecosystem);
-                      return (
-                        <div className={`w-10 h-10 rounded-xl border flex items-center justify-center font-bold text-[11px] font-mono shadow-xs ${badge.bg} ${badge.text}`}>
-                          {badge.label}
-                        </div>
-                      );
-                    })()}
+                    <div className="w-9 h-9 rounded-lg bg-fluent-cardDark border border-fluent-cardBorderDark flex items-center justify-center font-bold text-xs text-fluent-green">
+                      {proj.ecosystem.substring(0, 2)}
+                    </div>
                     <div>
                       <div className="text-xs font-semibold text-fluent-textDark">{proj.name}</div>
                       <div className="text-[11px] text-fluent-textSecondaryDark font-mono mt-0.5">{proj.path}</div>
