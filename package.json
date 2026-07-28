@@ -1,0 +1,39 @@
+{
+  "name": "purgo",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Purgo - Developer Disk Manager for Windows & Cross-Platform",
+  "main": "dist-electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build:electron": "vite build --config vite.config.electron.ts",
+    "build": "tsc && vite build && tsc -p tsconfig.node.json && npm run build:electron",
+    "preview": "vite preview",
+    "electron:dev": "npm run build:electron && concurrently \"vite --port 4173 --strictPort\" \"cross-env NODE_ENV=development wait-on tcp:4173 && electron .\"",
+    "electron:build": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.400.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.3.0",
+    "zustand": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^31.1.0",
+    "electron-builder": "^24.13.3",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.2",
+    "vite": "^5.3.2",
+    "wait-on": "^7.2.0"
+  }
+}
