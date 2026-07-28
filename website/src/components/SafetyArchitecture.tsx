@@ -2,94 +2,84 @@
 
 import {
   IconShieldCheck,
-  IconLock,
-  IconHistory,
-  IconCode,
-  IconRefresh,
+  IconFolderOff,
+  IconBrandGit,
   IconCheck,
+  IconLock,
+  IconRefresh,
+  IconDeviceDesktop,
 } from "@tabler/icons-react";
 
 export default function SafetyArchitecture() {
   const SAFETY_PILLARS = [
     {
-      title: "Automatic Windows Restore Point",
+      icon: IconFolderOff,
+      title: "30-Day Recoverable Purgo Trash",
       description:
-        "Before modifying registry flags, turning off services, or stripping bloat packages, Purgo initializes a native Windows System Restore Point snapshot. You can roll back anytime with zero hassle.",
-      icon: IconHistory,
-      badge: "Pre-Execution Snapshot",
+        "No item is ever permanently wiped immediately. All cleaned build artifacts are moved to an isolated Purgo Trash retention folder with full original path preservation for 1-click restore.",
     },
     {
-      title: "Isolated Purgo Staging Vault",
+      icon: IconShieldCheck,
+      title: "Ecosystem Safety Ratings",
       description:
-        "Files deleted by Purgo's cache cleaner, duplicate hunter, or dev cleaner do not bypass safety. They are quarantined in an isolated, encrypted staging bin for easy single-click restoration.",
+        "Purgo inspects project manifests (`package.json`, `Cargo.toml`, `go.mod`, `pom.xml`) and rates every build folder as ✅ Safe, 🔍 Review, or ⚠️ Caution before cleaning.",
+    },
+    {
+      icon: IconBrandGit,
+      title: "Uncommitted Changes Safeguard",
+      description:
+        "Directly parses `.git/` metadata to verify repository health and warn if uncommitted work or unpushed branches exist near build directories.",
+    },
+    {
       icon: IconLock,
-      badge: "100% Reversible",
-    },
-    {
-      title: "Transparent Dry-Run Preview",
+      title: "Zero Automatic Wipes",
       description:
-        "Preview every script action, registry tweak, and target path BEFORE committing to execution. You maintain 100% granular checkmark control over every single package.",
-      icon: IconRefresh,
-      badge: "Zero Hidden Actions",
-    },
-    {
-      title: "100% Open Source Auditability",
-      description:
-        "No hidden telemetry, no third-party installers, no bundled adware. Purgo is 100% open-source software built transparently on GitHub for total privacy and trust.",
-      icon: IconCode,
-      badge: "MIT Licensed",
+        "Purgo never runs background deletions without your explicit confirmation. You maintain 100% control over what gets cleaned and when.",
     },
   ];
 
   return (
     <section
       id="safety"
-      className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28"
+      className="relative px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto scroll-mt-28"
     >
-      <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4">
-          <IconShieldCheck size={16} />
-          <span>Uncompromising System Protection</span>
+      <div className="shredded-glass-panel rounded-3xl p-6 sm:p-10">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4 backdrop-blur-xl shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+            <IconShieldCheck size={15} />
+            <span>Developer Safety Policy</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight font-display mb-3">
+            Built with <span className="text-emerald-400">Absolute Safety & Reversibility</span>
+          </h2>
+          <p className="text-slate-300 text-sm sm:text-base font-sans leading-relaxed">
+            Purgo enforces a strict non-destructive policy designed specifically to keep your developer projects safe from accidental data loss.
+          </p>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight font-display mb-4">
-          Built with <span className="text-emerald-400">Zero-Risk Safety</span> Guarantees
-        </h2>
-        <p className="text-slate-300 text-base sm:text-lg font-sans leading-relaxed">
-          Most system debloaters risk breaking Windows updates or bricking core OS services. Purgo enforces 4 stringent safety layers to ensure your PC remains rock-solid.
-        </p>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {SAFETY_PILLARS.map((pillar, idx) => {
-          const Icon = pillar.icon;
-          return (
-            <div
-              key={idx}
-              className="glass-panel rounded-2xl border border-white/10 border-t-white/20 p-6 sm:p-8 bg-[#0a0d16]/80 backdrop-blur-xl relative overflow-hidden group hover:border-emerald-500/40 transition-all duration-300"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition">
-                  <Icon size={24} />
+        {/* Pillars Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {SAFETY_PILLARS.map((pillar, idx) => {
+            const Icon = pillar.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-[#060912]/45 border border-white/10 rounded-2xl p-6 hover:border-emerald-500/40 hover:bg-emerald-500/[0.06] transition space-y-3 backdrop-blur-xl shadow-inner"
+              >
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
+                  <Icon size={22} />
                 </div>
-                <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-[11px] font-mono font-medium">
-                  {pillar.badge}
-                </span>
+                <h3 className="text-lg font-bold text-white font-sans">
+                  {pillar.title}
+                </h3>
+                <p className="text-slate-300 text-xs sm:text-sm font-sans leading-relaxed">
+                  {pillar.description}
+                </p>
               </div>
-
-              <h3 className="text-xl font-bold text-white font-sans mb-2 group-hover:text-emerald-300 transition">
-                {pillar.title}
-              </h3>
-              <p className="text-slate-300 text-sm font-sans leading-relaxed">
-                {pillar.description}
-              </p>
-
-              <div className="mt-4 pt-4 border-t border-white/5 flex items-center gap-2 text-xs font-mono text-emerald-400/90">
-                <IconCheck size={14} />
-                <span>Verified Active Safeguard</span>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

@@ -1,21 +1,25 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
+import { useState } from "react";
+import dynamic from "next/dynamic";
 
-import Hero from '@/components/Hero';
-import PurgoModules from '@/components/PurgoModules';
-import PurgoSimulator from '@/components/PurgoSimulator';
-import BottomDock from '@/components/BottomDock';
-import ScrollConvergingBackground from '@/components/ScrollConvergingBackground';
-import CursorGlowAndScrollProgress from '@/components/CursorGlowAndScrollProgress';
-import InitialPreloader from '@/components/InitialPreloader';
+import Hero from "@/components/Hero";
+import PurgoModules from "@/components/PurgoModules";
+import PurgoSimulator from "@/components/PurgoSimulator";
+import BottomDock from "@/components/BottomDock";
+import ScrollConvergingBackground from "@/components/ScrollConvergingBackground";
+import CursorGlowAndScrollProgress from "@/components/CursorGlowAndScrollProgress";
+import InitialPreloader from "@/components/InitialPreloader";
 
 // Dynamic Lazy-Loaded Sections
-const SafetyArchitecture = dynamic(() => import('@/components/SafetyArchitecture'));
-const PerformanceMatrix = dynamic(() => import('@/components/PerformanceMatrix'));
-const PurgoFaq = dynamic(() => import('@/components/PurgoFaq'));
-const DownloadCta = dynamic(() => import('@/components/DownloadCta'));
+const SafetyArchitecture = dynamic(
+  () => import("@/components/SafetyArchitecture"),
+);
+const PerformanceMatrix = dynamic(
+  () => import("@/components/PerformanceMatrix"),
+);
+const PurgoFaq = dynamic(() => import("@/components/PurgoFaq"));
+const DownloadCta = dynamic(() => import("@/components/DownloadCta"));
 
 interface ToastItem {
   id: number;
@@ -49,10 +53,12 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-top opacity-[0.25] pointer-events-none"
           style={{
-            backgroundImage: 'url(/banner.jpg)',
-            filter: 'hue-rotate(125deg) saturate(1.35) brightness(1.05)',
-            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 90%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 90%)',
+            backgroundImage: "url(/banner.jpg)",
+            filter: "hue-rotate(125deg) saturate(1.35) brightness(1.05)",
+            maskImage:
+              "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 90%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 90%)",
           }}
         />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.18),transparent_70%)]" />

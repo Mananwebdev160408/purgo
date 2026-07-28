@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { IconHelpCircle, IconChevronDown } from "@tabler/icons-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { IconChevronDown, IconHelpCircle, IconShieldCheck } from "@tabler/icons-react";
 
 interface FaqItem {
   question: string;
@@ -10,42 +11,42 @@ interface FaqItem {
 
 const FAQS: FaqItem[] = [
   {
-    question: "Is Purgo safe to run on my main Windows PC?",
+    question: "Will Purgo delete my actual source code files?",
     answer:
-      "Yes, 100%. Before applying any debloat modifications or package removals, Purgo automatically triggers a native Windows System Restore Point. Additionally, deleted files go into Purgo's isolated staging trash, allowing single-click restoration anytime.",
+      "Never. Purgo only scans for recreatable build artifacts (such as node_modules, target/, dist/, .next/, venv, .gradle/) and global toolchain caches. Your source code files, Git history, and project configuration files are 100% untouched.",
   },
   {
-    question: "Which Windows versions are supported?",
+    question: "What happens if I accidentally delete a build folder I still needed?",
     answer:
-      "Purgo is fully tested and optimized for Windows 10 (64-bit) and Windows 11 (64-bit). It works on Home, Pro, Enterprise, and Education editions.",
+      "Every single deletion goes directly into the 30-Day Purgo Trash retention folder. Purgo preserves original path metadata, allowing you to restore any folder or file back to its original location with a single click.",
   },
   {
-    question: "Does Purgo require installation or Administrator rights?",
+    question: "What developer ecosystems does Purgo auto-detect?",
     answer:
-      "Purgo is available both as a standalone portable executable (no installer needed) and a standard installer. Administrator privilege is requested only when applying System Restore creation or turning off Windows diagnostic services.",
+      "Purgo supports 10+ ecosystems out of the box: Node.js (npm, yarn, pnpm, bun), Rust (Cargo), Python (venv, pip), Java (Maven, Gradle), Go, Flutter/Dart, PHP (Composer), Unity, C#/C++, and Docker.",
   },
   {
-    question: "Can I undo a debloat operation if I need Xbox or OneDrive later?",
+    question: "How does Purgo handle global package manager caches?",
     answer:
-      "Absolutely. Purgo includes an instant rollback feature that allows you to reinstall native Windows apps or re-enable Xbox services with a single click.",
+      "Purgo scans global toolchain caches stored outside your project directories — such as %APPDATA%\\npm-cache, Cargo registry caches, Gradle build caches, Pub cache, and VS Code data — allowing you to reclaim tens of gigabytes safely.",
   },
   {
-    question: "How does the Developer Clean Mode work?",
+    question: "Does Purgo require Git CLI installed to analyze repositories?",
     answer:
-      "Developer mode recursively scans your projects for node_modules folders, Rust target directories, Python venvs, and build caches. It checks git status to ensure you don't delete anything uncommitted.",
+      "No. Purgo parses .git/ directory metadata directly. It identifies stale repositories (>60 days since last commit), active branches, remote providers, and warns if uncommitted local changes exist.",
   },
   {
-    question: "Is Purgo open-source?",
+    question: "Is Purgo free and open source?",
     answer:
-      "Yes, Purgo is 100% open-source under the MIT license on GitHub. You can inspect all source code, script commands, and safety routines directly.",
+      "Yes! Purgo is 100% open source under the MIT License, built with Electron, React, and TypeScript. Zero hidden telemetry, zero background ads, and zero telemetry tracking.",
   },
 ];
 
 export default function PurgoFaq() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
 
-  const toggleFaq = (idx: number) => {
-    setOpenIndex(openIndex === idx ? null : idx);
+  const toggle = (idx: number) => {
+    setOpenIdx(openIdx === idx ? null : idx);
   };
 
   return (
@@ -53,54 +54,60 @@ export default function PurgoFaq() {
       id="faq"
       className="relative px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto scroll-mt-28"
     >
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4">
-          <IconHelpCircle size={16} />
-          <span>Frequently Asked Questions</span>
+      <div className="shredded-glass-panel rounded-3xl p-6 sm:p-10">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4 backdrop-blur-xl shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+            <IconHelpCircle size={15} />
+            <span>Developer FAQ</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight font-display mb-3">
+            Frequently Asked <span className="text-emerald-400">Questions</span>
+          </h2>
+          <p className="text-slate-300 text-sm sm:text-base font-sans leading-relaxed">
+            Everything you need to know about Purgo Developer Disk Manager and safety protocols.
+          </p>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight font-display mb-4">
-          Got Questions? <span className="text-emerald-400">We've Got Answers</span>
-        </h2>
-        <p className="text-slate-300 text-base font-sans">
-          Everything you need to know about Purgo safety, debloating, and system restoration.
-        </p>
-      </div>
 
-      <div className="space-y-4 font-sans">
-        {FAQS.map((faq, idx) => {
-          const isOpen = openIndex === idx;
-          return (
-            <div
-              key={idx}
-              className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
-                isOpen
-                  ? "bg-[#0e1320] border-emerald-500/40 shadow-lg shadow-emerald-500/5"
-                  : "bg-[#0a0d16]/70 border-white/10 hover:border-white/20"
-              }`}
-            >
-              <button
-                onClick={() => toggleFaq(idx)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between gap-4"
+        {/* FAQ Accordion List */}
+        <div className="space-y-3">
+          {FAQS.map((faq, idx) => {
+            const isOpen = openIdx === idx;
+            return (
+              <div
+                key={idx}
+                className="border border-white/10 rounded-2xl bg-[#060912]/45 backdrop-blur-xl overflow-hidden transition hover:border-emerald-500/30"
               >
-                <span className="font-bold text-slate-100 text-base sm:text-lg">
-                  {faq.question}
-                </span>
-                <IconChevronDown
-                  size={20}
-                  className={`text-emerald-400 shrink-0 transition-transform duration-200 ${
-                    isOpen ? "rotate-180 text-emerald-300" : "text-slate-400"
-                  }`}
-                />
-              </button>
+                <button
+                  onClick={() => toggle(idx)}
+                  className="w-full p-4 sm:p-5 text-left font-sans text-sm sm:text-base font-bold text-white flex items-center justify-between gap-4 hover:bg-white/[0.03] transition"
+                >
+                  <span>{faq.question}</span>
+                  <IconChevronDown
+                    size={18}
+                    className={`text-emerald-400 transition-transform duration-200 shrink-0 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
 
-              {isOpen && (
-                <div className="px-6 pb-6 text-slate-300 text-sm leading-relaxed border-t border-white/5 pt-4">
-                  {faq.answer}
-                </div>
-              )}
-            </div>
-          );
-        })}
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="border-t border-white/10 px-4 sm:px-5 pb-5 pt-3 text-slate-300 text-xs sm:text-sm font-sans leading-relaxed"
+                    >
+                      {faq.answer}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,12 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 import {
   IconHome,
   IconCpu,
@@ -10,42 +15,36 @@ import {
   IconChartBar,
   IconHelpCircle,
   IconDownload,
-  IconCopy,
-  IconCheck,
   IconBrandGithub,
   IconX,
-} from '@tabler/icons-react';
-import DbPortalLogo from './DbPortalLogo';
+} from "@tabler/icons-react";
+import DbPortalLogo from "./DbPortalLogo";
 
 interface BottomDockProps {
   onToast?: (msg: string) => void;
 }
 
 export default function BottomDock({ onToast }: BottomDockProps) {
-  const [activeSection, setActiveSection] = useState('hero');
-  const [copied, setCopied] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Framer Motion Scroll Progress Tracker
   const { scrollYProgress } = useScroll();
 
   // Dynamic Conic Gradient Border starting from top (270deg) and filling clockwise with scroll
-  const borderBackground = useTransform(
-    scrollYProgress,
-    (progress) => {
-      const pct = Math.min(Math.max(progress * 100, 0.5), 100);
-      return `conic-gradient(from 270deg at 50% 50%, #10b981 0%, #34d399 ${pct}%, rgba(255, 255, 255, 0.12) ${pct}%, rgba(255, 255, 255, 0.12) 100%)`;
-    }
-  );
+  const borderBackground = useTransform(scrollYProgress, (progress) => {
+    const pct = Math.min(Math.max(progress * 100, 0.5), 100);
+    return `conic-gradient(from 270deg at 50% 50%, #10b981 0%, #34d399 ${pct}%, rgba(255, 255, 255, 0.12) ${pct}%, rgba(255, 255, 255, 0.12) 100%)`;
+  });
 
   const dockItems = [
-    { id: 'hero', label: 'Overview', key: '1', icon: IconHome },
-    { id: 'modules', label: 'Modules', key: '2', icon: IconCpu },
-    { id: 'simulator', label: 'Simulator', key: '3', icon: IconSparkles },
-    { id: 'safety', label: 'Safety', key: '4', icon: IconShieldCheck },
-    { id: 'benchmarks', label: 'Benchmarks', key: '5', icon: IconChartBar },
-    { id: 'faq', label: 'FAQ', key: '6', icon: IconHelpCircle },
-    { id: 'download', label: 'Download', key: '7', icon: IconDownload },
+    { id: "hero", label: "Overview", key: "1", icon: IconHome },
+    { id: "modules", label: "Modules", key: "2", icon: IconCpu },
+    { id: "simulator", label: "Simulator", key: "3", icon: IconSparkles },
+    { id: "safety", label: "Safety", key: "4", icon: IconShieldCheck },
+    { id: "benchmarks", label: "Benchmarks", key: "5", icon: IconChartBar },
+    { id: "faq", label: "FAQ", key: "6", icon: IconHelpCircle },
+    { id: "download", label: "Download", key: "7", icon: IconDownload },
   ];
 
   useEffect(() => {
@@ -59,7 +58,7 @@ export default function BottomDock({ onToast }: BottomDockProps) {
 
     const observer = new IntersectionObserver(handleObserver, {
       root: null,
-      rootMargin: '-20% 0px -50% 0px',
+      rootMargin: "-20% 0px -50% 0px",
       threshold: 0.1,
     });
 
@@ -69,25 +68,25 @@ export default function BottomDock({ onToast }: BottomDockProps) {
     });
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.altKey && (e.key >= '1' && e.key <= '7')) {
+      if (e.altKey && e.key >= "1" && e.key <= "7") {
         const keyVal = e.key;
         const target = dockItems.find((item) => item.key === keyVal);
         if (target) {
           e.preventDefault();
           const targetEl = document.getElementById(target.id);
           if (targetEl) {
-            targetEl.scrollIntoView({ behavior: 'smooth' });
+            targetEl.scrollIntoView({ behavior: "smooth" });
             if (onToast) onToast(`Navigated to ${target.label}`);
           }
         }
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [onToast]);
 
@@ -96,16 +95,8 @@ export default function BottomDock({ onToast }: BottomDockProps) {
     setActiveSection(id);
     const targetEl = document.getElementById(id);
     if (targetEl) {
-      targetEl.scrollIntoView({ behavior: 'smooth' });
+      targetEl.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  const handleQuickCopy = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigator.clipboard.writeText('purgo --clean');
-    setCopied(true);
-    if (onToast) onToast('Copied "purgo --clean" to clipboard!');
-    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -121,11 +112,10 @@ export default function BottomDock({ onToast }: BottomDockProps) {
 
           {/* Inner Dock Bar */}
           <div className="bg-[#0e1320]/90 border border-white/10 backdrop-blur-2xl rounded-full p-1.5 sm:p-2 flex items-center gap-1 font-sans text-xs relative z-10">
-            
             {/* Brand Badge inside Dock */}
             <a
               href="#hero"
-              onClick={(e) => handleNavClick('hero', e)}
+              onClick={(e) => handleNavClick("hero", e)}
               className="dock-item relative flex items-center justify-center p-1 rounded-full hover:bg-white/10 transition"
               aria-label="Purgo"
             >
@@ -144,14 +134,17 @@ export default function BottomDock({ onToast }: BottomDockProps) {
                 const isActive = activeSection === item.id;
 
                 return (
-                  <div key={item.id} className="relative flex items-center shrink-0">
+                  <div
+                    key={item.id}
+                    className="relative flex items-center shrink-0"
+                  >
                     <a
                       href={`#${item.id}`}
                       onClick={(e) => handleNavClick(item.id, e)}
                       className={`dock-item flex items-center justify-center p-2.5 sm:p-3 rounded-full transition-all duration-200 ${
                         isActive
-                          ? 'active text-emerald-300 bg-emerald-500/25 border border-emerald-500/50 shadow-[0_0_18px_rgba(16,185,129,0.35)] scale-105'
-                          : 'text-slate-400 hover:text-slate-100 hover:bg-white/10'
+                          ? "active text-emerald-300 bg-emerald-500/25 border border-emerald-500/50 shadow-[0_0_18px_rgba(16,185,129,0.35)] scale-105"
+                          : "text-slate-400 hover:text-slate-100 hover:bg-white/10"
                       }`}
                       aria-label={item.label}
                     >
@@ -161,7 +154,9 @@ export default function BottomDock({ onToast }: BottomDockProps) {
                       </span>
                     </a>
 
-                    {(idx === 2 || idx === 5) && <div className="w-px h-5 bg-white/10 mx-1 hidden sm:block" />}
+                    {(idx === 2 || idx === 5) && (
+                      <div className="w-px h-5 bg-white/10 mx-1 hidden sm:block" />
+                    )}
                   </div>
                 );
               })}
@@ -171,23 +166,15 @@ export default function BottomDock({ onToast }: BottomDockProps) {
 
             {/* Quick Actions inside Dock */}
             <div className="flex items-center gap-1 shrink-0">
-              <button
-                onClick={handleQuickCopy}
-                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/40 text-xs font-mono transition shadow-inner"
-                title="Copy debloat command"
-              >
-                {copied ? <IconCheck size={15} stroke={2} className="text-emerald-300" /> : <IconCopy size={15} stroke={1.75} className="text-emerald-400" />}
-                <span className="hidden md:inline font-semibold">purgo --clean</span>
-              </button>
-
               <a
                 href="https://github.com/Mananwebdev160408/purgo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition"
+                className="p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition flex items-center gap-2 px-3 text-xs font-semibold"
                 title="GitHub Repository"
               >
                 <IconBrandGithub size={19} stroke={1.75} />
+                <span className="hidden sm:inline text-slate-300">GitHub</span>
               </a>
             </div>
           </div>
@@ -209,7 +196,7 @@ export default function BottomDock({ onToast }: BottomDockProps) {
               initial={{ opacity: 0, scale: 0.85, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.85, y: 15 }}
-              transition={{ duration: 0.2, ease: 'easeOut' }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               className="fixed bottom-24 right-6 z-50 bg-[#0e1320]/95 border border-white/10 backdrop-blur-2xl rounded-2xl p-3 flex flex-col gap-2 shadow-[0_20px_50px_rgba(0,0,0,0.85)] max-h-[60vh] overflow-y-auto scrollbar-none w-48"
             >
               {dockItems.map((item) => {
@@ -226,28 +213,19 @@ export default function BottomDock({ onToast }: BottomDockProps) {
                     }}
                     className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-all duration-150 ${
                       isActive
-                        ? 'text-emerald-300 bg-emerald-500/20 border border-emerald-500/40 shadow-[0_0_12px_rgba(16,185,129,0.2)] font-bold'
-                        : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+                        ? "text-emerald-300 bg-emerald-500/20 border border-emerald-500/40 shadow-[0_0_12px_rgba(16,185,129,0.2)] font-bold"
+                        : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
                     }`}
                   >
                     <Icon size={18} stroke={1.75} className="shrink-0" />
-                    <span className="font-sans text-xs font-semibold">{item.label}</span>
+                    <span className="font-sans text-xs font-semibold">
+                      {item.label}
+                    </span>
                   </a>
                 );
               })}
 
               <div className="h-px bg-white/10 my-1" />
-
-              <button
-                onClick={(e) => {
-                  handleQuickCopy(e);
-                  setIsMobileMenuOpen(false);
-                }}
-                className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/40 text-xs font-mono transition"
-              >
-                {copied ? <IconCheck size={16} stroke={2} className="text-emerald-300" /> : <IconCopy size={16} stroke={1.75} className="text-emerald-400" />}
-                <span className="font-bold">purgo --clean</span>
-              </button>
 
               <a
                 href="https://github.com/Mananwebdev160408/purgo"

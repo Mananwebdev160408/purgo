@@ -3,101 +3,88 @@
 import { useState } from "react";
 import {
   IconDownload,
-  IconBrandGithub,
   IconCheck,
-  IconCopy,
-  IconDeviceDesktop,
   IconShieldCheck,
-  IconSparkles,
+  IconBrandGithub,
+  IconDeviceDesktop,
 } from "@tabler/icons-react";
 
 interface DownloadCtaProps {
-  onToast?: (msg: string) => void;
+  onToast: (msg: string) => void;
 }
 
 export default function DownloadCta({ onToast }: DownloadCtaProps) {
-  const [copied, setCopied] = useState(false);
+  const [downloading, setDownloading] = useState(false);
 
-  const handleCopyCommand = () => {
-    navigator.clipboard.writeText("git clone https://github.com/Mananwebdev160408/purgo.git");
-    setCopied(true);
-    if (onToast) onToast("Copied repository git command to clipboard!");
-    setTimeout(() => setCopied(false), 2000);
+  const handleDownload = () => {
+    setDownloading(true);
+    onToast("Starting Purgo Setup Wizard Download...");
+    setTimeout(() => setDownloading(false), 2500);
+    window.open(
+      "https://github.com/Mananwebdev160408/purgo/releases/download/v1.0.0/Purgo-Setup-1.0.0.exe",
+      "_blank"
+    );
   };
 
   return (
     <section
       id="download"
-      className="relative px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto scroll-mt-28"
+      className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto scroll-mt-28"
     >
-      <div className="glass-panel rounded-3xl border border-emerald-500/30 p-8 sm:p-14 bg-gradient-to-b from-[#0a121f] to-[#06080e] shadow-[0_0_50px_rgba(16,185,129,0.15)] text-center relative overflow-hidden">
-        {/* Background Radial Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.15),transparent_70%)] pointer-events-none" />
+      <div className="shredded-glass-panel rounded-3xl border-emerald-500/40 p-8 sm:p-14 text-center">
+        {/* Glow Effects */}
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[radial-gradient(circle,rgba(16,185,129,0.3),transparent_70%)] pointer-events-none" />
 
-        <div className="relative z-10 max-w-3xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-mono">
-            <IconSparkles size={16} />
-            <span>Ready for Instant System Speed?</span>
+        <div className="relative z-10 space-y-6 max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono backdrop-blur-xl shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+            <IconDeviceDesktop size={15} />
+            <span>Purgo v1.0.0 Desktop Standalone</span>
           </div>
 
-          <h2 className="text-3xl sm:text-6xl font-black text-white tracking-tight leading-tight font-display">
-            Take Back Control of Your <br />
-            <span className="text-emerald-400">Windows PC Today</span>
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display">
+            Reclaim Your Storage <br />
+            <span className="text-emerald-400">Keep Your Sanity</span>
           </h2>
 
-          <p className="text-slate-300 text-base sm:text-lg font-sans leading-relaxed">
-            Download Purgo Desktop GUI now — lightweight, 100% open source, with automatic System Restore point protection and instant bloatware removal.
+          <p className="text-slate-300 text-sm sm:text-base font-sans leading-relaxed">
+            Download Purgo for Windows 10 & 11. Clean recreatable build artifacts, global caches, and stale git repos safely with 30-day Purgo Trash.
           </p>
 
-          {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <a
-              href="https://github.com/Mananwebdev160408/purgo/releases/download/v1.0.0/Purgo-Setup-1.0.0.exe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm font-sans transition flex items-center justify-center gap-3 shadow-xl shadow-emerald-500/25"
+            <button
+              onClick={handleDownload}
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-sans font-black text-sm transition flex items-center justify-center gap-3 shadow-[0_0_25px_rgba(16,185,129,0.35)] backdrop-blur-md"
             >
-              <IconDownload size={20} />
-              <span>Download Purgo Setup Wizard v1.0.0</span>
-            </a>
+              {downloading ? (
+                <IconCheck size={20} className="text-emerald-950 animate-pulse" />
+              ) : (
+                <IconDownload size={20} className="text-emerald-950" />
+              )}
+              <span>
+                {downloading ? "Opening Release..." : "Download Purgo Desktop App (.exe)"}
+              </span>
+            </button>
 
             <a
               href="https://github.com/Mananwebdev160408/purgo"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-4 rounded-xl bg-slate-900 border border-white/10 hover:bg-slate-800 text-slate-200 font-semibold text-sm font-sans transition flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-4 rounded-xl bg-slate-900/60 hover:bg-slate-800/80 border border-white/15 text-slate-200 font-sans font-bold text-sm transition flex items-center justify-center gap-2.5 backdrop-blur-md"
             >
               <IconBrandGithub size={20} />
-              <span>View Source Code</span>
+              <span>GitHub Repository</span>
             </a>
           </div>
 
-          {/* Git Clone Quick Command */}
-          <div className="pt-6">
-            <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 text-xs font-mono text-slate-300 backdrop-blur-md">
-              <span className="text-emerald-400 font-bold">$</span>
-              <span>git clone https://github.com/Mananwebdev160408/purgo.git</span>
-              <button
-                onClick={handleCopyCommand}
-                className="p-1 rounded hover:bg-white/10 text-slate-400 hover:text-emerald-300 transition ml-2"
-                title="Copy Command"
-              >
-                {copied ? <IconCheck size={16} className="text-emerald-400" /> : <IconCopy size={16} />}
-              </button>
-            </div>
-          </div>
-
-          {/* Footnotes */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400 font-sans pt-4">
+          <div className="pt-4 flex items-center justify-center gap-6 text-xs text-slate-400 font-sans">
             <span className="flex items-center gap-1.5">
-              <IconDeviceDesktop size={15} className="text-emerald-400" /> Windows 10 & 11 (64-bit)
+              <IconShieldCheck size={16} className="text-emerald-400" />
+              100% Free & Open Source (MIT)
             </span>
-            <span className="flex items-center gap-1.5">
-              <IconShieldCheck size={15} className="text-emerald-400" /> System Restore Safeguard
-            </span>
-            <span className="flex items-center gap-1.5">
-              <IconSparkles size={15} className="text-emerald-400" /> 100% Free & Open Source
-            </span>
+            <span>•</span>
+            <span>Windows 10 & 11 (64-bit)</span>
+            <span>•</span>
+            <span>Zero Telemetry</span>
           </div>
         </div>
       </div>

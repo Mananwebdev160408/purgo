@@ -21,11 +21,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Purgo — Modern Windows Debloater & System Optimizer',
-  description: 'Open-source Windows debloater, telemetry shield, and system optimizer. Reclaim RAM, clean bloatware, and tune performance with 100% reversible restore point safety.',
+  title: 'Purgo — Intelligent Developer Disk Manager for Windows',
+  description: 'Open-source developer disk manager for Windows. Discover and clean recreatable build artifacts (node_modules, target/, venv), global toolchain caches, large files, and stale repos safely with 30-day Purgo Trash.',
   openGraph: {
-    title: 'Purgo — Modern Windows Debloater & System Optimizer',
-    description: 'Reclaim RAM, disable tracking telemetry, and eliminate pre-installed Windows bloatware instantly.',
+    title: 'Purgo — Intelligent Developer Disk Manager for Windows',
+    description: 'Reclaim tens of gigabytes from node_modules, Rust target/, build caches, and stale git repos safely with 30-day Purgo Trash.',
     type: 'website',
   },
   icons: {
