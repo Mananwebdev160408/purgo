@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Minus, Square, X, HardDrive, Copy } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Minus, Square, X, Copy } from 'lucide-react';
 import { PurgoLogo } from '../common/PurgoLogo';
+import { useScanStore } from '../../store/useScanStore';
 import '../../types/purgoAPI.d.ts';
 
 export const Titlebar: React.FC = () => {
   const [isMaximized, setIsMaximized] = useState(false);
   const isElectron = typeof window !== 'undefined' && !!window.purgoAPI;
+  const { projects, isScanning, activeScanLocation } = useScanStore();
+
+  const totalReclaimable = useMemo(
+    () => projects.reduce((acc, p) => acc + p.reclaimableSizeBytes, 0),
+    [projects]
+  );
+
+  const formatSize = (bytes: number) => {
+    if (bytes >= 1024 * 1024 * 1024) return (bytes / (1024 * 1024 * 1024)).toFixed(1) + ' GB';
+    return (bytes / (1024 * 1024)).toFixed(0) + ' MB';
+  };
 
   useEffect(() => {
     if (!isElectron) return;
@@ -39,10 +51,19 @@ export const Titlebar: React.FC = () => {
         </span>
       </div>
 
-      {/* Center indicator */}
-      <div className="text-[11px] text-fluent-textSecondaryDark flex items-center gap-1.5 pointer-events-none">
-        <HardDrive className="w-3.5 h-3.5 text-fluent-green" />
-        <span>Purgo Safety Engine Active</span>
+      {/* Center: live status */}
+      <div className="pointer-events-none">
+        {isScanning ? (
+          <div className="flex items-center gap-1.5 text-[10px] text-fluent-textSecondaryDark font-mono max-w-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-fluent-green animate-pulse shrink-0" />
+            <span className="truncate">{activeScanLocation || 'Scanning…'}</span>
+          </div>
+        ) : totalReclaimable > 0 ? (
+          <div className="flex items-center gap-1.5 text-[10px] text-fluent-textSecondaryDark font-mono">
+            <span className="text-fluent-green font-semibold">{formatSize(totalReclaimable)}</span>
+            <span>reclaimable</span>
+          </div>
+        ) : null}
       </div>
 
       {/* Window Controls */}
