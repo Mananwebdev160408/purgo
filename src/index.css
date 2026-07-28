@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --fluent-bg: #f3f3f6;
+    --fluent-card: #ffffff;
+    --fluent-card-border: #e2e8f0;
+    --fluent-hover: #f1f5f9;
+    --fluent-text: #0f172a;
+    --fluent-text-secondary: #64748b;
+    --fluent-input: #ffffff;
+
+    --scrollbar-thumb: rgba(0, 0, 0, 0.18);
+    --scrollbar-thumb-hover: rgba(0, 0, 0, 0.32);
+  }
+
+  .dark {
+    --fluent-bg: #18181b;
+    --fluent-card: #242427;
+    --fluent-card-border: #343438;
+    --fluent-hover: #2f2f33;
+    --fluent-text: #f4f4f5;
+    --fluent-text-secondary: #a1a1aa;
+    --fluent-input: #1e1e21;
+
+    --scrollbar-thumb: rgba(255, 255, 255, 0.18);
+    --scrollbar-thumb-hover: rgba(255, 255, 255, 0.3);
+  }
+
+  body {
+    background-color: var(--fluent-bg);
+    color: var(--fluent-text);
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+}
+
+/* Custom Windows Drag Region for Titlebar */
+.drag-region {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* Scrollbar Custom Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
